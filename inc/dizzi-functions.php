@@ -773,7 +773,7 @@ function dizzi_portfolio_section( $sub_title, $sec_title, $pNumber ){
 		)
 	);
 
-	$projects_page_url = get_permalink( get_page_by_title( 'Projects' ) );
+	$projects_page_url = get_permalink( dizzi_get_page_by_title( 'Projects' ) );
 
 	function get_portfolio_filterable_section ( $categories, $className = 'col-lg-5 col-md-6' ) { ?>
 		<div class="<?php echo esc_attr( $className )?>">
