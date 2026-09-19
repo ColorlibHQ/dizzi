@@ -220,16 +220,16 @@ function dizzi_link_pages(){
 
 function dizzi_social_icon_overwrite_by_flaticon( $social_icon ){
 	switch ( $social_icon ) {
-		case ($social_icon == 'fa fa-facebook' || $social_icon == 'fa fa-facebook-f'):
+		case ($social_icon == 'fa-brands fa-facebook' || $social_icon == 'fa-brands fa-facebook-f'):
 			$social_icon = 'flaticon-facebook';
 			break;
-		case ($social_icon == 'fa fa-twitter'):
+		case ($social_icon == 'fa-brands fa-twitter'):
 			$social_icon = 'flaticon-twitter';
 			break;
-		case ($social_icon == 'fa fa-skype'):
+		case ($social_icon == 'fa-brands fa-skype'):
 			$social_icon = 'flaticon-skype';
 			break;
-		case ($social_icon == 'fa fa-instagram'):
+		case ($social_icon == 'fa-brands fa-instagram'):
 			$social_icon = 'flaticon-instagram';
 			break;
 		
@@ -272,7 +272,7 @@ function dizzi_page_titlebar() {
         <section class="hero-banner">
             <div class="container">
 				<div class="row align-items-center justify-content-between">
-					<div class="breadcrumb_tittle text-left">
+					<div class="breadcrumb_tittle text-start">
 						<?php
 							if ( function_exists( 'dizzi_breadcrumbs' ) ) {
 								dizzi_breadcrumbs();
