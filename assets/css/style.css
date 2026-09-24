@@ -2979,13 +2979,6 @@ ul {
   }
 }
 
-/* line 138, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_about_part.scss */
-.experiance_part {
-  background-image: url(../img/experiance_overlay.png);
-  background-repeat: no-repeat;
-  background-position: right;
-}
-
 @media (max-width: 991px) {
   /* line 138, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_about_part.scss */
   .experiance_part {
@@ -3013,14 +3006,6 @@ ul {
   margin-top: 72px;
   display: flex;
   align-items: center;
-}
-
-/* line 158, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_about_part.scss */
-.experiance_part .about_text_iner .about_text_counter {
-  background-image: url(../img/heading_bg.png);
-  background-size: contain;
-  background-position: left;
-  background-repeat: no-repeat;
 }
 
 /* line 163, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_about_part.scss */
@@ -3794,7 +3779,6 @@ ul {
   top: 59px;
   width: 148px;
   height: 124px;
-  background-image: url(../img/quote.png);
   content: "";
   background-size: cover;
   background-repeat: no-repeat;
@@ -5253,12 +5237,6 @@ h6 {
   border: 1px solid #f1f1f1;
 }
 
-/* line 798, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_elements.scss */
-.primary-checkbox input:checked + label {
-  background: url(../img/elements/primary-check.png) no-repeat center center/cover;
-  border: none;
-}
-
 /* line 806, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_elements.scss */
 .confirm-checkbox {
   width: 16px;
@@ -5293,12 +5271,6 @@ h6 {
   border-radius: 3px;
   cursor: pointer;
   border: 1px solid #f1f1f1;
-}
-
-/* line 835, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_elements.scss */
-.confirm-checkbox input:checked + label {
-  background: url(../img/elements/success-check.png) no-repeat center center/cover;
-  border: none;
 }
 
 /* line 843, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_elements.scss */
@@ -5343,12 +5315,6 @@ h6 {
   z-index: 3;
 }
 
-/* line 876, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_elements.scss */
-.disabled-checkbox input:checked + label {
-  background: url(../img/elements/disabled-check.png) no-repeat center center/cover;
-  border: none;
-}
-
 /* line 884, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_elements.scss */
 .primary-radio {
   width: 16px;
@@ -5385,12 +5351,6 @@ h6 {
   border: 1px solid #f1f1f1;
 }
 
-/* line 913, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_elements.scss */
-.primary-radio input:checked + label {
-  background: url(../img/elements/primary-radio.png) no-repeat center center/cover;
-  border: none;
-}
-
 /* line 921, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_elements.scss */
 .confirm-radio {
   width: 16px;
@@ -5425,12 +5385,6 @@ h6 {
   border-radius: 8px;
   cursor: pointer;
   border: 1px solid #f1f1f1;
-}
-
-/* line 950, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_elements.scss */
-.confirm-radio input:checked + label {
-  background: url(../img/elements/success-radio.png) no-repeat center center/cover;
-  border: none;
 }
 
 /* line 958, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_elements.scss */
@@ -5473,12 +5427,6 @@ h6 {
 .disabled-radio input:disabled {
   cursor: not-allowed;
   z-index: 3;
-}
-
-/* line 991, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_elements.scss */
-.disabled-radio input:checked + label {
-  background: url(../img/elements/disabled-radio.png) no-repeat center center/cover;
-  border: none;
 }
 
 /* line 999, /Applications/MAMP/htdocs/palash/cl/july 2019/192 Agency/192 Agency html/sass/_elements.scss */
