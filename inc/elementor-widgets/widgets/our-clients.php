@@ -191,33 +191,39 @@ class Dizzi_Clients extends Widget_Base {
         if( \Elementor\Plugin::$instance->editor->is_edit_mode() === true  ) {
         ?>
         <script>
-        ( function( $ ){
-            var client_logo = $(".client_logo_slider");
-            if (client_logo.length) {
-                client_logo.owlCarousel({
-                items: 6,
-                loop: true,
-                responsive: {
-                    0: {
-                    items: 3,
-                    margin: 15
-                    },
-                    600: {
-                    items: 3,
-                    margin: 15
-                    },
-                    991: {
-                    items: 5,
-                    margin: 15
-                    },
-                    1200: {
+        (function () {
+            function run() {
+                var UI = window.ColorlibUI;
+                if (!UI) return;
+                UI.owl('.client_logo_slider', {
                     items: 6,
-                    margin: 15
+                    loop: true,
+                    responsive: {
+                        0: {
+                            items: 3,
+                            margin: 15
+                        },
+                        600: {
+                            items: 3,
+                            margin: 15
+                        },
+                        991: {
+                            items: 5,
+                            margin: 15
+                        },
+                        1200: {
+                            items: 6,
+                            margin: 15
+                        }
                     }
-                }
                 });
             }
-        })(jQuery);
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+            } else {
+                run();
+            }
+        })();
         </script>
         <?php 
         }

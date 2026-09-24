@@ -316,32 +316,38 @@ class Dizzi_Reviews extends Widget_Base {
         if( \Elementor\Plugin::$instance->editor->is_edit_mode() === true  ) {
         ?>
         <script>
-        ( function( $ ){
-            var review = $(".review_part_text");
-            if (review.length) {
-            review.owlCarousel({
-                items: 2,
-                loop: true,
-                dots: true,
-                autoplay: true,
-                margin: 40,
-                autoplayHoverPause: true,
-                autoplayTimeout: 5000,
-                nav: false,
-                responsive: {
-                0: {
-                    items: 1
-                },
-                480: {
-                    items: 1
-                },
-                768: {
-                    items: 2
-                }
-                }
-            });
+        (function () {
+            function run() {
+                var UI = window.ColorlibUI;
+                if (!UI) return;
+                UI.owl('.review_part_text', {
+                    items: 2,
+                    loop: true,
+                    dots: true,
+                    autoplay: true,
+                    margin: 40,
+                    autoplayHoverPause: true,
+                    autoplayTimeout: 5000,
+                    nav: false,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        480: {
+                            items: 1
+                        },
+                        768: {
+                            items: 2
+                        }
+                    }
+                });
             }
-        })(jQuery);
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+            } else {
+                run();
+            }
+        })();
         </script>
         <?php 
         }

@@ -1,106 +1,114 @@
-(function($) {
-  "use strict";
-  $(window).scroll(function () {
-    var window_top = $(window).scrollTop() + 1;
-    if (window_top > 50) {
-      $('.main_menu').addClass('menu_fixed animated fadeInDown');
-    } else {
-      $('.main_menu').removeClass('menu_fixed animated fadeInDown');
-    }
+/**
+ * Dizzi front-end behaviour, without jQuery.
+ *
+ * The plugin calls keep the options they always had; ColorlibUI provides
+ * drop-in versions of Magnific Popup, Owl Carousel and Isotope that build the
+ * same markup, so the theme's stylesheets apply unchanged.
+ */
+(function () {
+  'use strict';
+
+  var UI = window.ColorlibUI;
+  if (!UI) return;
+
+  UI.ready(function () {
+    var menus = UI.toElements('.main_menu');
+    window.addEventListener('scroll', function () {
+      var fixed = window.pageYOffset + 1 > 50;
+      menus.forEach(function (menu) {
+        if (fixed) {
+          menu.classList.add('menu_fixed', 'animated', 'fadeInDown');
+        } else {
+          menu.classList.remove('menu_fixed', 'animated', 'fadeInDown');
+        }
+      });
+    }, { passive: true });
   });
-  
-  $(".popup-youtube, .popup-vimeo").magnificPopup({
+
+  // The old script ran this same call again on window load; ColorlibUI
+  // calls are idempotent, so once is enough.
+  UI.magnific('.popup-youtube, .popup-vimeo', {
     // disableOn: 700,
-    type: "iframe",
-    mainClass: "mfp-fade",
+    type: 'iframe',
+    mainClass: 'mfp-fade',
     removalDelay: 160,
     preloader: false,
     fixedContentPos: false
   });
 
-  $(document).ready(function() {
-    ColorlibUI.enhanceSelects('select');
+  UI.enhanceSelects('select');
+
+  UI.owl('.client_logo_slider', {
+    items: 6,
+    loop: true,
+    responsive: {
+      0: {
+        items: 3,
+        margin: 15
+      },
+      600: {
+        items: 3,
+        margin: 15
+      },
+      991: {
+        items: 5,
+        margin: 15
+      },
+      1200: {
+        items: 6,
+        margin: 15
+      }
+    }
   });
 
-  var client_logo = $(".client_logo_slider");
-  if (client_logo.length) {
-    client_logo.owlCarousel({
-      items: 6,
+  function onLoad() {
+    // Portfolio grid and its filter buttons.
+    var workGrid = [];
+    if (document.getElementById('portfolio')) {
+      workGrid = UI.isotope('.portfolio-grid', {
+        itemSelector: '.all'
+      });
+    }
+
+    var filters = UI.toElements('.portfolio-filter ul li');
+    filters.forEach(function (item) {
+      item.addEventListener('click', function () {
+        filters.forEach(function (li) { li.classList.remove('active'); });
+        item.classList.add('active');
+
+        var data = item.getAttribute('data-filter');
+        workGrid.forEach(function (grid) {
+          grid.arrange({ filter: data });
+        });
+      });
+    });
+
+    UI.owl('.review_part_text', {
+      items: 2,
       loop: true,
+      dots: true,
+      autoplay: true,
+      margin: 40,
+      autoplayHoverPause: true,
+      autoplayTimeout: 5000,
+      nav: false,
       responsive: {
         0: {
-          items: 3,
-          margin: 15
+          items: 1
         },
-        600: {
-          items: 3,
-          margin: 15
+        480: {
+          items: 1
         },
-        991: {
-          items: 5,
-          margin: 15
-        },
-        1200: {
-          items: 6,
-          margin: 15
+        768: {
+          items: 2
         }
       }
     });
   }
 
-  $(window).on("load", function() {
-    if (document.getElementById("portfolio")) {
-      var $workGrid = $(".portfolio-grid").isotope({
-        itemSelector: ".all"
-      });
-    }
-
-    $(".portfolio-filter ul li").on("click", function() {
-      $(".portfolio-filter ul li").removeClass("active");
-      $(this).addClass("active");
-
-      var data = $(this).attr("data-filter");
-      $workGrid.isotope({
-        filter: data
-      });
-    });
-
-    var review = $(".review_part_text");
-    if (review.length) {
-      review.owlCarousel({
-        items: 2,
-        loop: true,
-        dots: true,
-        autoplay: true,
-        margin: 40,
-        autoplayHoverPause: true,
-        autoplayTimeout: 5000,
-        nav: false,
-        responsive: {
-          0: {
-            items: 1
-          },
-          480: {
-            items: 1
-          },
-          768: {
-            items: 2
-          }
-        }
-      });
-    }
-
-    $(".popup-youtube, .popup-vimeo").magnificPopup({
-      // disableOn: 700,
-      type: "iframe",
-      mainClass: "mfp-fade",
-      removalDelay: 160,
-      preloader: false,
-      fixedContentPos: false
-    });
-  });
-
-    
-
-
-})(jQuery);
+  if (document.readyState === 'complete') {
+    onLoad();
+  } else {
+    window.addEventListener('load', onLoad);
+  }
+}());

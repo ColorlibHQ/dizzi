@@ -182,25 +182,42 @@ class Dizzi_Projects extends Widget_Base {
         if( \Elementor\Plugin::$instance->editor->is_edit_mode() === true  ) {
         ?>
         <script>
-        ( function( $ ){
-            $(window).on('load', function() {
-                if (document.getElementById("portfolio")) {
-                    var $workGrid = $(".portfolio-grid").isotope({
-                        itemSelector: ".all"
+        (function () {
+            function run() {
+                var UI = window.ColorlibUI;
+                if (!UI) return;
+                // Editor preview: the same portfolio grid and filters as custom.js, after
+                // the page has loaded (or at once when it already has, on a re-render).
+                function init() {
+                    var workGrid = UI.isotope('.portfolio-grid', {
+                        itemSelector: '.all'
+                    });
+
+                    var filters = UI.toElements('.portfolio-filter ul li');
+                    filters.forEach(function (item) {
+                        item.addEventListener('click', function () {
+                            filters.forEach(function (li) { li.classList.remove('active'); });
+                            item.classList.add('active');
+
+                            var data = item.getAttribute('data-filter');
+                            workGrid.forEach(function (grid) {
+                                grid.arrange({ filter: data });
+                            });
+                        });
                     });
                 }
-
-                $(".portfolio-filter ul li").on("click", function() {
-                    $(".portfolio-filter ul li").removeClass("active");
-                    $(this).addClass("active");
-
-                    var data = $(this).attr("data-filter");
-                    $workGrid.isotope({
-                        filter: data
-                    });
-                });
-            });
-        })(jQuery);
+                if (document.readyState === 'complete') {
+                    init();
+                } else {
+                    window.addEventListener('load', init);
+                }
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+            } else {
+                run();
+            }
+        })();
         </script>
         <?php 
         }
