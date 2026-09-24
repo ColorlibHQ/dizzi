@@ -250,26 +250,19 @@
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
-					array(
-						'handler'		=> 'dizzi-jquery-nice-select-js',
-						'file' 			=> $jsPath.'jquery.nice-select.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'dizzi-instagram-feed-js',
-						'file' 			=> $jsPath.'jquery.instagramFeed.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
-						'in_footer' 	=> true
-					),
 
+					array(
+						'handler'		=> 'dizzi-ui-js',
+						'file' 			=> $jsPath.'colorlib-ui.js',
+						'dependency' 	=> array(),
+						'version' 		=> '2.1.1',
+						'in_footer' 	=> true
+					),
 					array(
 						'handler'		=> 'dizzi-custom',
 						'file' 			=> $jsPath.'custom.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> $this->dizzi_version,
+						'dependency' 	=> array( 'jquery', 'dizzi-ui-js' ),
+						'version' 		=> $this->dizzi_version . '-s1',
 						'in_footer' 	=> true
 					),
 
