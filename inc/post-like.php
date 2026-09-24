@@ -14,6 +14,7 @@ function dizzi_sl_enqueue_scripts() {
 
 	wp_localize_script( 'dizzi-post-likes', 'simpleLikes', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'like'    => esc_html__( 'Like', 'dizzi' ),
 		'unlike'  => esc_html__( 'Unlike', 'dizzi' )
 	) );
 }
